@@ -1,0 +1,28 @@
+[user]
+	name = {NAME}
+	email = {EMAIL}
+[core]
+	excludesfile = {HOME}/.gitignore
+[alias]
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	remotes = remote -v
+	unstage = reset -q HEAD --
+	discard = checkout --
+	uncommit = reset --mixed HEAD~
+	amend = commit --amend
+	nevermind = !git reset --hard HEAD && git clean -d -f
+	graph = log --graph -50 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+	precommit = diff --cached --diff-algorithm=minimal -w
+	sync = pull --rebase
+	selective-add = add --patch
+	selective-stash = stash save --patch
+	wip-branches = log --branches --not --remotes --simplify-by-decoration --decorate --oneline
+	save = stash save --keep-inde
+	search = log -p --all -S
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
